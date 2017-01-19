@@ -12,3 +12,7 @@ lib/optional
 lib/jcompilo.jar
 .DS_Store
 
+.gradle/
+.idea/
+classes/
+
