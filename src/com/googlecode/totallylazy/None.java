@@ -12,10 +12,7 @@ import static com.googlecode.totallylazy.Sequences.sequence;
 import static com.googlecode.totallylazy.Unchecked.cast;
 
 public class None<T> extends Option<T>{
-//    private static final None NONE = new None();
-//
-//    private None() {}
-//
+
     public static <T> None<T> none() {
         throw new RuntimeException("DAN");
         //return cast(NONE);
@@ -106,23 +103,9 @@ public class None<T> extends Option<T>{
         throw new RuntimeException("DAN");
         //return left(value);
     }
-//
-//    public Sequence<T> join(final Iterable<? extends T> iterable){
-//        return sequence(iterable);
-//    }
-//
-//    @Override
-//    public boolean contains(T instance) {
-//        return false;
-//    }
-//
+
     @Override
     public boolean exists(Predicate<? super T> predicate) {
         return false;
     }
-//
-//    @Override
-//    public String toString() {
-//        return "none()";
-//    }
 }

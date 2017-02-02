@@ -3,20 +3,9 @@ package com.googlecode.totallylazy;
 //import com.googlecode.totallylazy.iterators.EmptyIterator;
 
 import java.util.Iterator;
-import java.util.NoSuchElementException;
-
-//import static com.googlecode.totallylazy.Callers.call;
-//import static com.googlecode.totallylazy.Objects.equalTo;
-//import static com.googlecode.totallylazy.Option.none;
-//import static com.googlecode.totallylazy.Option.some;
 
 public final class Left<L,R> extends Either<L, R> {
-//    private final L value;
-//
-//    private Left(L value) {
-//        this.value = value;
-//    }
-//
+
     public static <L,R> Left<L,R> left(L value) {
         throw new RuntimeException("DAN");
         //return new Left<L,R>(value);
@@ -45,13 +34,7 @@ public final class Left<L,R> extends Either<L, R> {
         throw new RuntimeException("DAN");
         //return value;
     }
-//
-//    @Override
-//    public Either<R, L> flip() {
-//        throw new RuntimeException("DAN");
-//        return right(value);
-//    }
-//
+
 //    @Override
     public Option<L> leftOption() {
         throw new RuntimeException("DAN");
@@ -61,15 +44,8 @@ public final class Left<L,R> extends Either<L, R> {
     @Override
     public Option<R> rightOption() {
         throw new RuntimeException("DAN");
-//        throw new RuntimeException("DAN");
-//        return none();
     }
-//
-//    @Override
-//    public <S> S fold(S seed, Callable2<? super S, ? super L, ? extends S> left, Callable2<? super S, ? super R, ? extends S> right) {
-//        throw new RuntimeException("DAN");
-//        return call(left, seed, left());
-//    }
+
 
     @Override
     public <S> S map(Callable1<? super L, S> left, Callable1<? super R, ? extends S> right) {

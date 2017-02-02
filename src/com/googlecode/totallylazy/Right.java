@@ -3,12 +3,6 @@ package com.googlecode.totallylazy;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-//import static com.googlecode.totallylazy.Callers.call;
-//import static com.googlecode.totallylazy.Objects.equalTo;
-//import static com.googlecode.totallylazy.Option.none;
-//import static com.googlecode.totallylazy.Option.some;
-//import static com.googlecode.totallylazy.Sequences.one;
-
 public final class Right<L,R> extends Either<L,R> {
     private final R value;
 
@@ -40,11 +34,6 @@ public final class Right<L,R> extends Either<L,R> {
         throw new NoSuchElementException();
     }
 
-//    @Override
-//    public Either<R, L> flip() {
-//        return left(value);
-//    }
-//
     @Override
     public Option<L> leftOption() {
         throw new RuntimeException("DAN");
@@ -56,11 +45,6 @@ public final class Right<L,R> extends Either<L,R> {
         throw new RuntimeException("DAN");
         //return some(value);
     }
-//
-//    @Override
-//    public <S> S fold(S seed, Callable2<? super S, ? super L, ? extends S> left, Callable2<? super S, ? super R, ? extends S> right) {
-//        return call(right, seed, right());
-//    }
 
     @Override
     public <S> S map(Callable1<? super L, S> left, Callable1<? super R, ? extends S> right) {

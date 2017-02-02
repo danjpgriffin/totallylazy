@@ -1,98 +1,84 @@
 package com.googlecode.totallylazy.collections;
 
-import com.googlecode.totallylazy.Callables;
 import com.googlecode.totallylazy.Option;
 import com.googlecode.totallylazy.Pair;
 import com.googlecode.totallylazy.Predicate;
-import com.googlecode.totallylazy.Predicates;
 import com.googlecode.totallylazy.Segment;
 import com.googlecode.totallylazy.Sequence;
-import com.googlecode.totallylazy.Sequences;
-import com.googlecode.totallylazy.Unchecked;
 
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentMap;
-
-import static com.googlecode.totallylazy.Predicates.is;
 
 @SuppressWarnings("deprecation")
 public abstract class AbstractMap<K, V> extends ReadOnlyMap<K,V> implements PersistentMap<K, V> {
     @Override
     public Map<K, V> toMutableMap() {
         throw new RuntimeException("DAN");
-        //return methods.toMap(this);
     }
 
     @Override
     public ConcurrentMap<K, V> toConcurrentMap() {
         throw new RuntimeException("DAN");
-        //return AtomicMap.atomicMap(this);
     }
 
     @Override
     public Sequence<Pair<K, V>> toSequence() {
-        return Sequences.sequence(this);
+        throw new RuntimeException("DAN");
     }
 
     @Override
     public Sequence<K> keys() {
-        return toSequence().map(Callables.<K>first());
+        throw new RuntimeException("DAN");
     }
 
     @Override
     public Sequence<V> values() {
         throw new RuntimeException("DAN");
-        //return toSequence().map(Callables.<V>second());
     }
-
-//    @Override
-//    public PersistentList<Pair<K, V>> toPersistentList() {
-//        return toSequence().toPersistentList();
-//    }
 
     @Override
     public Option<V> find(Predicate<? super K> predicate) {
-        return filterKeys(predicate).values().headOption();
+        throw new RuntimeException("DAN");
     }
 
     @Override
     public PersistentMap<K, V> filterKeys(Predicate<? super K> predicate) {
-        return filter(Predicates.<K>first(predicate));
+        throw new RuntimeException("DAN");
     }
 
     @Override
     public PersistentMap<K, V> filterValues(Predicate<? super V> predicate) {
-        return filter(Predicates.<V>second(predicate));
+        throw new RuntimeException("DAN");
     }
 
     @Override
     public <C extends Segment<Pair<K, V>>> C joinTo(C rest) {
-        return toSequence().joinTo(rest);
+        throw new RuntimeException("DAN");
     }
 
     @Override
     public Set<K> keySet() {
-        return keys().toSet();
+        throw new RuntimeException("DAN");
     }
 
     @Override
     public boolean containsKey(Object key) {
-        return contains(key);
+        throw new RuntimeException("DAN");
     }
 
     @Override
     public Set<Entry<K, V>> entrySet() {
-        return Sequences.<Entry<K, V>>sequence(this).toSet();
+        throw new RuntimeException("DAN");
     }
 
     @Override
     public V get(Object key) {
-        return lookup(Unchecked.<K>cast(key)).getOrNull();
+        throw new RuntimeException("DAN");
     }
 
     @Override
     public boolean containsValue(Object value) {
-        return values().contains(value);
+        throw new RuntimeException("DAN");
     }
 }

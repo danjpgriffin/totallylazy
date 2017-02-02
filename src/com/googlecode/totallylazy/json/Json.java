@@ -25,19 +25,7 @@ public class Json {
     public static <V> List<V> list(String json) {
         return Json.<V>parseList(json).value();
     }
-//
-//    public static Object object(String json) {
-//        return parseObject(json).value();
-//    }
-//
-//    public static <V> Sequence<Pair<String, V>> pairs(Reader json) {
-//        return Json.<V>parsePairs(json).value();
-//    }
-//
-//    public static <V> Sequence<V> sequence(Reader json) {
-//        return Json.<V>parseSequence(json).value();
-//    }
-//
+
     public static <V> Result<Map<String, V>> parseMap(String json) {
         throw new RuntimeException("DAN");
         //return cast(Grammar.OBJECT.parse(json));
@@ -52,26 +40,5 @@ public class Json {
         throw new RuntimeException("DAN");
         //return Grammar.VALUE.parse(json);
     }
-//
-//    public static <V> Result<Sequence<Pair<String, V>>> parsePairs(Reader json) {
-//        return cast(Grammar.PAIRS.parse(json));
-//    }
-//
-//    public static <V> Result<Sequence<V>> parseSequence(Reader json) {
-//        return cast(Grammar.SEQUENCE.parse(json));
-//    }
-//
-//    public static class functions {
-//        public static Mapper<String, Map<String, Object>> toMap = new Mapper<String, Map<String, Object>>() {
-//            public Map<String, Object> call(String json) throws Exception {
-//                return Json.map(json);
-//            }
-//        };
-//
-//        public static Mapper<Object, String> toJson = new Mapper<Object, String>() {
-//            public String call(Object value) throws Exception {
-//                return Json.json(value);
-//            }
-//        };
-//    }
+
 }

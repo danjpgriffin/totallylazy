@@ -3,10 +3,6 @@ package com.googlecode.totallylazy;
 import java.util.Iterator;
 import java.util.concurrent.Callable;
 
-//import static com.googlecode.totallylazy.Either.right;
-import static com.googlecode.totallylazy.Sequences.sequence;
-import static com.googlecode.totallylazy.Unchecked.cast;
-
 public class Some<T> extends Option<T> {
     private final T value;
 
@@ -105,15 +101,6 @@ public class Some<T> extends Option<T> {
         //return right(this.value);
     }
 
-//    public Sequence<T> join(Iterable<? extends T> iterable) {
-//        return Sequences.cons(value, iterable);
-//    }
-
-//    @Override
-//    public boolean contains(T instance) {
-//        return value.equals(instance);
-//    }
-//
     @Override
     public boolean exists(Predicate<? super T> predicate) {
         return predicate.matches(value);
