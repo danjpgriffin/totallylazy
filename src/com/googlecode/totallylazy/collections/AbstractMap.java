@@ -20,12 +20,14 @@ import static com.googlecode.totallylazy.Predicates.is;
 public abstract class AbstractMap<K, V> extends ReadOnlyMap<K,V> implements PersistentMap<K, V> {
     @Override
     public Map<K, V> toMutableMap() {
-        return methods.toMap(this);
+        throw new RuntimeException("DAN");
+        //return methods.toMap(this);
     }
 
     @Override
     public ConcurrentMap<K, V> toConcurrentMap() {
-        return AtomicMap.atomicMap(this);
+        throw new RuntimeException("DAN");
+        //return AtomicMap.atomicMap(this);
     }
 
     @Override
@@ -40,13 +42,14 @@ public abstract class AbstractMap<K, V> extends ReadOnlyMap<K,V> implements Pers
 
     @Override
     public Sequence<V> values() {
-        return toSequence().map(Callables.<V>second());
+        throw new RuntimeException("DAN");
+        //return toSequence().map(Callables.<V>second());
     }
 
-    @Override
-    public PersistentList<Pair<K, V>> toPersistentList() {
-        return toSequence().toPersistentList();
-    }
+//    @Override
+//    public PersistentList<Pair<K, V>> toPersistentList() {
+//        return toSequence().toPersistentList();
+//    }
 
     @Override
     public Option<V> find(Predicate<? super K> predicate) {

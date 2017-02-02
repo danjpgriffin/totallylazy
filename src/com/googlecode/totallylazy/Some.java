@@ -3,7 +3,7 @@ package com.googlecode.totallylazy;
 import java.util.Iterator;
 import java.util.concurrent.Callable;
 
-import static com.googlecode.totallylazy.Either.right;
+//import static com.googlecode.totallylazy.Either.right;
 import static com.googlecode.totallylazy.Sequences.sequence;
 import static com.googlecode.totallylazy.Unchecked.cast;
 
@@ -22,7 +22,8 @@ public class Some<T> extends Option<T> {
     }
 
     public Iterator<T> iterator() {
-        return sequence(value).iterator();
+        throw new RuntimeException("DAN");
+        //return sequence(value).iterator();
     }
 
     @Override
@@ -47,12 +48,14 @@ public class Some<T> extends Option<T> {
 
     @Override
     public T getOrElse(T other) {
-        return get();
+        throw new RuntimeException("DAN");
+        //return get();
     }
 
     @Override
     public T getOrElse(Callable<? extends T> callable) {
-        return get();
+        throw new RuntimeException("DAN");
+        //return get();
     }
 
     @Override
@@ -62,12 +65,14 @@ public class Some<T> extends Option<T> {
 
     @Override
     public <E extends Exception> T getOrThrow(E e) throws E {
-        return get();
+        throw new RuntimeException("DAN");
+        //return get();
     }
 
     @Override
     public <S> Option<S> map(Callable1<? super T, ? extends S> callable) {
-        return option(Callers.call(callable, get()));
+        throw new RuntimeException("DAN");
+        //return option(Callers.call(callable, get()));
     }
 
     @Override
@@ -78,33 +83,37 @@ public class Some<T> extends Option<T> {
 
     @Override
     public <S> Option<S> flatMap(Callable1<? super T, ? extends Option<? extends S>> callable) {
-        return cast(Callers.call(callable, get()));
+        throw new RuntimeException("DAN");
+        //return cast(Callers.call(callable, get()));
     }
 
     @Override
     public Option<T> filter(Predicate<? super T> predicate) {
-        return predicate.matches(value) ? this : Option.<T>none();
+        throw new RuntimeException("DAN");
+        //return predicate.matches(value) ? this : Option.<T>none();
     }
 
     @Override
     public <S> S fold(S seed, Callable2<? super S, ? super T, ? extends S> callable) {
-        return Callers.call(callable, seed, get());
+        throw new RuntimeException("DAN");
+        //return Callers.call(callable, seed, get());
     }
 
     @Override
     public <L> Either<L, T> toEither(L value) {
-        return right(this.value);
+        throw new RuntimeException("DAN");
+        //return right(this.value);
     }
 
-    public Sequence<T> join(Iterable<? extends T> iterable) {
-        return Sequences.cons(value, iterable);
-    }
+//    public Sequence<T> join(Iterable<? extends T> iterable) {
+//        return Sequences.cons(value, iterable);
+//    }
 
-    @Override
-    public boolean contains(T instance) {
-        return value.equals(instance);
-    }
-
+//    @Override
+//    public boolean contains(T instance) {
+//        return value.equals(instance);
+//    }
+//
     @Override
     public boolean exists(Predicate<? super T> predicate) {
         return predicate.matches(value);

@@ -1,8 +1,8 @@
 package com.googlecode.totallylazy.time;
 
 import com.googlecode.totallylazy.Function1;
-import com.googlecode.totallylazy.comparators.Maximum;
-import com.googlecode.totallylazy.comparators.Minimum;
+//import com.googlecode.totallylazy.comparators.Maximum;
+//import com.googlecode.totallylazy.comparators.Minimum;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -41,9 +41,9 @@ public class Dates {
         return format(LEXICAL);
     }
 
-    public static DateFormatConverter RFC3339() {
-        return new DateFormatConverter(RFC3339_WITH_MILLISECONDS, RFC3339, RFC3339_WITHOUT_TIME);
-    }
+//    public static DateFormatConverter RFC3339() {
+//        return new DateFormatConverter(RFC3339_WITH_MILLISECONDS, RFC3339, RFC3339_WITHOUT_TIME);
+//    }
 
     public static SimpleDateFormat format(final String pattern) {
         return formatWithDefaultZone(pattern, UTC);
@@ -86,7 +86,8 @@ public class Dates {
     }
 
     public static Date parse(String value) {
-        return date(value);
+        throw new RuntimeException("DAN");
+        //return date(value);
     }
 
     public static Function1<String, Date> parse(final DateFormat format) {
@@ -148,9 +149,9 @@ public class Dates {
         };
     }
 
-    public static Date date(String value) {
-        return DateFormatConverter.defaultConverter().parse(value);
-    }
+//    public static Date date(String value) {
+//        return DateFormatConverter.defaultConverter().parse(value);
+//    }
 
     public static Date date(long value) {
         return new Date(value);
@@ -184,10 +185,10 @@ public class Dates {
         return calendar.getTime();
     }
 
-    @Deprecated
-    public static Date addSeconds(Date date, int amount) {
-        return Seconds.add(date, amount);
-    }
+//    @Deprecated
+//    public static Date addSeconds(Date date, int amount) {
+//        return Seconds.add(date, amount);
+//    }
 
     public static GregorianCalendar calendar() {
         return new GregorianCalendar(UTC);
@@ -219,13 +220,13 @@ public class Dates {
         return calendar.getTime();
     }
 
-    public static Maximum.Function<Date> maximum() {
-        return Maximum.constructors.maximum(Dates.MIN_VALUE);
-    }
-
-    public static Minimum.Function<Date> minimum() {
-        return Minimum.constructors.minimum(Dates.MAX_VALUE);
-    }
+//    public static Maximum.Function<Date> maximum() {
+//        return Maximum.constructors.maximum(Dates.MIN_VALUE);
+//    }
+//
+//    public static Minimum.Function<Date> minimum() {
+//        return Minimum.constructors.minimum(Dates.MAX_VALUE);
+//    }
 
     public static Date date(Date date) {
         return new Date(date.getTime());

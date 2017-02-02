@@ -8,7 +8,7 @@ import com.googlecode.totallylazy.Pair;
 import com.googlecode.totallylazy.Predicate;
 import com.googlecode.totallylazy.Predicates;
 import com.googlecode.totallylazy.Sequences;
-import com.googlecode.totallylazy.annotations.multimethod;
+//import com.googlecode.totallylazy.annotations.multimethod;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -16,37 +16,41 @@ import java.util.NoSuchElementException;
 import static com.googlecode.totallylazy.Sequences.sequence;
 
 public class HashTreeMap<K, V> extends AbstractMap<K, V> {
-    private final PersistentSortedMap<Integer, PersistentMap<K, V>> hash;
-    private final PersistentMap<K, V> emptyBucket = ListMap.<K, V>emptyListMap();
+//    private final PersistentSortedMap<Integer, PersistentMap<K, V>> hash;
+//    private final PersistentMap<K, V> emptyBucket = ListMap.<K, V>emptyListMap();
 
-    private HashTreeMap(PersistentSortedMap<Integer, PersistentMap<K, V>> hash) {
-        this.hash = hash;
-    }
+//    private HashTreeMap(PersistentSortedMap<Integer, PersistentMap<K, V>> hash) {
+//        this.hash = hash;
+//    }
 
-    public static <K, V> HashTreeMapFactory<K, V> factory() {
-        return HashTreeMapFactory.factory();
-    }
-
-    public static <K, V> HashTreeMap<K, V> hashTreeMap(PersistentSortedMap<Integer, PersistentMap<K, V>> map) {
-        return new HashTreeMap<K, V>(map);
-    }
-
+//    public static <K, V> HashTreeMapFactory<K, V> factory() {
+//        return HashTreeMapFactory.factory();
+//    }
+//
+//    public static <K, V> HashTreeMap<K, V> hashTreeMap(PersistentSortedMap<Integer, PersistentMap<K, V>> map) {
+//        return new HashTreeMap<K, V>(map);
+//    }
+//
     public static <K, V> HashTreeMap<K, V> hashTreeMap() {
-        return hashTreeMap(PersistentSortedMap.constructors.<Integer, PersistentMap<K, V>>sortedMap());
+        throw new RuntimeException("DAN");
+        //return hashTreeMap(PersistentSortedMap.constructors.<Integer, PersistentMap<K, V>>sortedMap());
     }
-
+//
     public static <K, V> HashTreeMap<K, V> hashTreeMap(Iterable<? extends Pair<K, V>> values) {
-        return HashTreeMap.<K,V>factory().map(values);
+        throw new RuntimeException("DAN");
+        //return HashTreeMap.<K,V>factory().map(values);
     }
 
     @Override
     public PersistentMap<K, V> empty() {
-        return hashTreeMap();
+        throw new RuntimeException("DAN");
+        //return hashTreeMap();
     }
 
     @Override
     public boolean isEmpty() {
-        return hash.isEmpty();
+        throw new RuntimeException("DAN");
+        //return hash.isEmpty();
     }
 
     @Override
@@ -72,26 +76,30 @@ public class HashTreeMap<K, V> extends AbstractMap<K, V> {
 
     @Override
     public Option<V> lookup(final K key) {
-        return hash.lookup(key.hashCode()).flatMap(PersistentMap.functions.<K, V>get(key));
+        throw new RuntimeException("DAN");
+        //return hash.lookup(key.hashCode()).flatMap(PersistentMap.functions.<K, V>get(key));
     }
 
     @Override
     public PersistentMap<K, V> insert(K key, V value) {
-        int hashCode = key.hashCode();
-        return hashTreeMap(hash.insert(hashCode, hash.lookup(hashCode).getOrElse(emptyBucket).insert(key, value)));
+        throw new RuntimeException("DAN");
+//        int hashCode = key.hashCode();
+//        return hashTreeMap(hash.insert(hashCode, hash.lookup(hashCode).getOrElse(emptyBucket).insert(key, value)));
     }
 
     @Override
     public PersistentMap<K, V> delete(K key) {
-        int hashCode = key.hashCode();
-        PersistentMap<K, V> bucket = hash.lookup(hashCode).getOrElse(emptyBucket).delete(key);
-        if(bucket.isEmpty()) return hashTreeMap(hash.delete(hashCode));
-        return hashTreeMap(hash.insert(hashCode, bucket));
+        throw new RuntimeException("DAN");
+//        int hashCode = key.hashCode();
+//        PersistentMap<K, V> bucket = hash.lookup(hashCode).getOrElse(emptyBucket).delete(key);
+//        if(bucket.isEmpty()) return hashTreeMap(hash.delete(hashCode));
+//        return hashTreeMap(hash.insert(hashCode, bucket));
     }
 
     @Override
     public PersistentMap<K, V> filter(Predicate<? super Pair<K, V>> predicate) {
-        return hashTreeMap(toSequence().filter(predicate));
+        throw new RuntimeException("DAN");
+        //return hashTreeMap(toSequence().filter(predicate));
     }
 
     @Override
@@ -106,7 +114,8 @@ public class HashTreeMap<K, V> extends AbstractMap<K, V> {
 
     @Override
     public <NewV> PersistentMap<K, NewV> map(Callable1<? super V, ? extends NewV> transformer) {
-        return hashTreeMap(toSequence().map(Callables.<K, V, NewV>second(transformer)));
+        throw new RuntimeException("DAN");
+        //return hashTreeMap(toSequence().map(Callables.<K, V, NewV>second(transformer)));
     }
 
     @Override
@@ -116,12 +125,14 @@ public class HashTreeMap<K, V> extends AbstractMap<K, V> {
 
     @Override
     public Iterator<Pair<K, V>> iterator() {
-        return hash.values().flatMap(Sequences.<Pair<K, V>>identity()).iterator();
+        throw new RuntimeException("DAN");
+        //return hash.values().flatMap(Sequences.<Pair<K, V>>identity()).iterator();
     }
 
     @Override
     public boolean contains(final Object other) {
-        return hash.lookup(other.hashCode()).map(PersistentMap.functions.<K, V>contains(other)).getOrElse(false);
+        throw new RuntimeException("DAN");
+        //return hash.lookup(other.hashCode()).map(PersistentMap.functions.<K, V>contains(other)).getOrElse(false);
     }
 
     @Override
@@ -139,7 +150,7 @@ public class HashTreeMap<K, V> extends AbstractMap<K, V> {
         return toSequence().hashCode();
     }
 
-    @multimethod
+    //@multimethod
     public boolean equals(HashTreeMap<K, V> obj) {
         return toSequence().equals(obj.toSequence());
     }
